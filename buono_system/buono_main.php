@@ -115,8 +115,10 @@
 									}
 					?></p>
 				<p><?php echo $row['post_date'] ?></p>
-				<p><a href="content_delete.php?post_id=<?php echo $row['post_id'] ?>">削除</a></p>
-				<p><a href="content_edit.php?content=<?php echo $row['content'] ?>">編集</a></p>
+				<p>
+					<a href="content_delete.php?post_id=<?php echo $row['post_id'] ?>">削除</a>
+				</p>
+				<p><a href="content_edit.php?content=<?php echo $row['content'] ?>&amp;post_id=<?php echo $row['post_id'] ?>">編集</a></p>
 			</div>
 		</div>
 <?php

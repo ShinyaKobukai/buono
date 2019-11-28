@@ -14,8 +14,10 @@
     $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
 
     $updata_stmt = $db->prepare(
-      "UPDATE post SET content=:content"  
+      "UPDATE post SET content=:content WHERE post_id=:post_id "  
     );
+    $updata_stmt->bindParam(':post_id',$post_id,PDO::PARAM_INT);
+    $updata_stmt->bindParam(':content',$content,PDO::PARAM_STR);
     $updata_stmt->execute();
 
     $user_stmt = $db->prepare(
@@ -44,9 +46,8 @@
       <div id="name">
         <p>編集が完了しました</font></p>
       </div>
-
       <div id="post_content">
-        <p><?php echo $content ?></p>
+        <p>レビュー：<?php echo $content ?></p>
       </div>
 </body>
   <p><a href="buono_main.php">投稿一覧へ</a></p>

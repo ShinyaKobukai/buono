@@ -1,5 +1,6 @@
 <?php
     //データの受け取り
+    $post_id = intval($_GET['post_id']);
     $content = strval($_GET['content']);
 
     $dsn = 'mysql:host=localhost;dbname=buono;character=utf8';
@@ -27,7 +28,7 @@
     </header>
         <div id="post">
         <div id ="menu_name">
-            <form action="updata_function.php?post_id=<?php echo $row['post_id'] ?>" method="post">
+            <form action="updata_function.php?post_id=<?php echo $post_id?>" method="post">
         </div>
             <div id ="review"><p>編集</p></div>
             <div id ="write">
