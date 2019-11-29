@@ -37,7 +37,7 @@
 		//プリペアドステートメントを作成
 
 		$user_stmt = $db->prepare(
-			"SELECT user_name,post.post_id,food_name,content,data,post_date FROM post LEFT OUTER JOIN user ON user.user_id = post.user_id LEFT OUTER JOIN photo_data ON post.post_id = photo_data.post_id ORDER BY post_date DESC ;"	
+			"SELECT user_name,post.post_id,food_name,content,data,place,post_date FROM post LEFT OUTER JOIN user ON user.user_id = post.user_id LEFT OUTER JOIN photo_data ON post.post_id = photo_data.post_id ORDER BY post_date DESC ;"	
 		);
 
 		$pagenum_stmt = $db->prepare(
@@ -80,11 +80,12 @@
 			<div id ="menu_name">
 			<form action="buono_write.php" enctype="multipart/form-data" method="post">
 				<p><input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id'];?>"></p></br>
-				<p>料理名<input type="text" name="food_name"></p> 
+				<p><img src="image/food_menu.png" alt="menu" width="16" height="16"><input type="text" name="food_name" placeholder="メニューの名前を入力してください（必須）"></p> 
 			</div>
 				<div id ="review">	
-					<p>レビュー</p><textarea name="content"></textarea>
+					<p><img src="image/content.png" alt="review:" width="16" height="16"><textarea name="content" placeholder="感想を入力してください（必須）"></textarea></p>
 				</div>
+				<p><img src="image/balloon.png" alt="場所" width="16" height="16"><input type="text" name="place" placeholder="場所を入力してください（任意）"></p> 
 				<div id ="write">
 						<input name="photo" type="file">
 						<p><input type="submit" value="書き込む"></p></br>
@@ -107,14 +108,15 @@
 			?>
 			</div>
 			<div id="Post_content">
-				<p> メニュー：<?php echo $row['food_name'] ?></p>
-				<p><?php echo nl2br($row['content'],false) ?></p>
+				<p><img src="image/food_menu.png" alt="menu:" width="16" height="16">　<?php echo $row['food_name'] ?></p>
+				<p><img src="image/content.png" alt="review:" width="16" height="16">　<?php echo nl2br($row['content'],false) ?></p>
 				<p><?php 
 					if(empty($row['data']) == null){
-										echo '<p><img src="data:image/jpeg;base64,' . $row['data'] . '"></p>'; 
+										echo '<p><img src="data:image/jpeg;base64,' . $row['data'] . '" width="45%" height="auto"></p>'; 
 									}
 					?></p>
-				<p><?php echo $row['post_date'] ?></p>
+				<p><img src="image/balloon.png" alt="場所" width="16" height="16"><?php echo $row['place'] ?></p>
+				<p><img src="image/clock.png" alt="date:" width="16" height="16">　<?php echo $row['post_date'] ?></p>
 				<p>
 					<a href="content_delete.php?post_id=<?php echo $row['post_id'] ?>">削除</a>
 				</p>

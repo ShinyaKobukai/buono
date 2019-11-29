@@ -1,11 +1,12 @@
 <?php
 	//データの受け取り
 	session_start();
+	$post_id = $_POST['post_id'];
 	$user_id = $_POST['user_id'];
 	$_SESSION['user_id'] = $user_id;
 	$food_name = $_POST['food_name'];
 	$content = $_POST['content'];
-	$post_id = $_POST['post_id'];
+	$place = $_POST['place'];
 
 	$data = file_get_contents($_FILES["photo"]["tmp_name"]);
 	$data = str_replace("data:image/jpeg;base64,","",$data);
@@ -27,13 +28,14 @@
 		$db ->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
 
 		$post_stmt = $db->prepare("
-			INSERT INTO post (user_id,food_name,content,post_date)
-			VALUES (:user_id, :food_name, :content, now())
+			INSERT INTO post (user_id,food_name,content,place,post_date)
+			VALUES (:user_id, :food_name, :content, :place, now())
 			");
 
 		$post_stmt->bindParam(':user_id',$user_id,PDO::PARAM_INT);
 		$post_stmt->bindParam(':food_name',$food_name,PDO::PARAM_STR);
 		$post_stmt->bindParam(':content',$content,PDO::PARAM_STR);
+		$post_stmt->bindParam(':place',$place,PDO::PARAM_STR);
 		$post_stmt->execute();
 
 		$post_id = $db->lastInsertId('post_id');
