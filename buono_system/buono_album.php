@@ -21,8 +21,10 @@
 <html lang="jp">
 <head>
     <meta charset="utf-8"/>
+    <link rel="stylesheet" href="buono.css">
     <title>buono</title>
 </head>
+
 <body>
     <h1>buono</h1>
 <?php
