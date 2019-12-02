@@ -58,9 +58,8 @@
 	}
 	// var_dump($post_id);
 	// exit();
-	
-	
 ?>
+
 
 <!DOCTYPE html>
 <html lang="jp">
@@ -71,21 +70,21 @@
 </head>
 <body>
 	<header>
-		<img src="logo.png" alt="">
+		<img src="image/logo.png" alt="">
 	<div id="loupe">
-     	<a href="search.html"><img src="search.jpeg" alt="検索"></a>
+     	<a href="search_form.php"><img src="search.jpeg" alt="検索"></a>
     </div>
 	</header>
 		<div id="post">
 			<div id ="menu_name">
 			<form action="buono_write.php" enctype="multipart/form-data" method="post">
 				<p><input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id'];?>"></p></br>
-				<p><img src="image/food_menu.png" alt="menu" width="16" height="16"><input type="text" name="food_name" placeholder="メニューの名前を入力してください（必須）"></p> 
+				<p><img src="image/food_menu.png" alt="menu" width="16" height="16"><input type="text" name="food_name" placeholder="メニューの名前を入力してください（必須）" size="40" maxlength="20"></p> 
 			</div>
 				<div id ="review">	
-					<p><img src="image/content.png" alt="review:" width="16" height="16"><textarea name="content" placeholder="感想を入力してください（必須）"></textarea></p>
+					<p><img src="image/content.png" alt="review:" width="16" height="16"><textarea name="content" placeholder="感想を入力してください（必須）" rows="4" cols="31"></textarea></p>
 				</div>
-				<p><img src="image/balloon.png" alt="場所" width="16" height="16"><input type="text" name="place" placeholder="場所を入力してください（任意）"></p> 
+				<p><img src="image/balloon.png" alt="場所" width="16" height="16"><input type="text" name="place" placeholder="場所を入力してください（任意）" size="40" maxlength="20"></p> 
 				<div id ="write">
 						<input name="photo" type="file">
 						<p><input type="submit" value="書き込む"></p></br>

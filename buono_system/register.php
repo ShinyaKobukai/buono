@@ -4,6 +4,13 @@ if(isset($_POST['register'])){
   $user_name = $_POST['user_name'];
   $password = $_POST['password'];
   $user_id = $_POST['user_id'];
+ 
+  if( isset($_FILES["user_icon"]) ){
+    $user_icon = file_get_contents($_FILES["user_icon"]["tmp_name"]);
+    $user_icon = str_replace("data:image/jpeg;base64,","",$user_icon);
+    $user_icon = base64_encode($user_icon);
+  }
+
   try{
     $db = new PDO('mysql:host=localhost;dbname=buono;character=utf8','root','');
     //ユーザーID重複チェック
@@ -17,9 +24,9 @@ if(isset($_POST['register'])){
     }
 
     //データベースにアカウント情報を登録
-    $sql = 'insert into user(user_id,password,user_name) values(?,?,?)';
+    $sql = 'insert into user(user_id,password,user_name,icon) values(?,?,?,?)';
     $stmt = $db->prepare($sql);
-    $stmt->execute(array($user_id,$password,$user_name));
+    $stmt->execute(array($user_id,$password,$user_name,$user_icon));
     $stmt = null;
     $db = null;
     header('Location: index.php');
@@ -40,7 +47,7 @@ if(isset($_POST['register'])){
   <title>新規登録画面</title>
 </head>
 <body>
-  <img src="logo.png" alt=""  id="title" />
+  <img src="image/logo.png" alt=""  id="title" />
   <div id="form_div">
     <br/>
     <h1>新規登録画面</h1>
@@ -51,7 +58,7 @@ if(isset($_POST['register'])){
       <br/>
       パスワード　:　<input type="password" name="password" value="" /><br/>
       <br/>
-      <input type="submit" name="register"  value="新規登録"  /><br /><br/>
+      <p>アイコンを選択してください</p><input name="user_icon" type="file"><br/>
       <a href="index.php" >ログイン</a>
       <p></p><br/>
     </form>

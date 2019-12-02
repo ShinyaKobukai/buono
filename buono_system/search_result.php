@@ -1,10 +1,10 @@
 <?php
-
 		$dsn = 'mysql:host=localhost;dbname=buono;charset=utf8';
 		$user = 'root';
 		$password = '';
 
 		$input = $_POST['food_name'];
+		$food_name = $input;
 		$input = '%'.$input.'%';
 
 		try{
@@ -21,25 +21,26 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Buono:検索結果</title>
-	<link rel="stylesheet" href="main.css" />
-	<link rel="stylesheet" href="search.css" />
-	<link rel="stylesheet" href="header.css" />
+	<link rel="stylesheet" href="buono.css" />
 </head>
 <body>
 	<header>
-		<h1><a href="main.php">Buono</a></h1>
+		<h1><a href="buono_main.php"><img src="image/logo.png" alt=""><a href="main.php"></a></h1>
 	</header>
+	</br>
+	<div id="result"><img src="image/loope.png" alt="">　検索ワード　<?php echo "：".$food_name; ?></div>
+	</br>
 	<?php
 		while ($row = $stmt->fetch()):
 		$title = $row['food_name'] ? $row['food_name'] : '（無題）';
 	?>
 	<!-- 投稿されたデータをHTMLで表示する -->
 			<div id="TimeLine">
-				<div id="Food"><?php echo $title ?></div>
+				<div id="name"><?php echo $title ?></div>
 				<div id="Post_content">
 					<p style="margin-left: 0.2rem;"><?php echo $row['user_name'] ?> <span style="opacity: 0.5;"><?php echo $row['user_id'] ?></span></p>
 					<p><?php echo nl2br($row['content'], false) ?></p>
-					<p><?php echo '<img src="data:image/jpeg;base64,' . $row['data'] . '">'; ?></p>
+					<p><?php echo '<img src="data:image/jpeg;base64,' . $row['data'] . '"width="45%" height="auto">'; ?></p>
 					<p><?php echo $row['post_date'] ?></p>
 				</div>
 			</div>
@@ -48,7 +49,7 @@
 	?>
 	</div>
 	<div id="main">
-		<a href="buono_main.php">×</a>
+		<a href="buono_main.php">投稿に戻る</a>
 	</div>
 </body>
 </html>

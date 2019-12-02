@@ -29,6 +29,7 @@ h1{
 
 h1 a{
 	color: #3c3;
+	font-family: 'AR DECODE'; 
 	text-decoration: none ;
 }
 
@@ -58,6 +59,14 @@ h1 a{
 	width: 50%;
 	border: solid #000;
 }
+#result{
+	/*text-align: center;*/
+	font-size: 24px;
+	background:#fbca4d;
+	/*border: solid 2px #FF0000;*/
+	border-radius: 10px;
+}
+
 #TimeLine{
 	margin: 0 auto 1em;
 	width: 80%;

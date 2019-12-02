@@ -33,7 +33,7 @@
 ?>
     <p><?php 
 			if(empty($result["data"]) == null){
-				echo '<p><a href="buono_main.php?post_id='.$result["post_id"].'"><img src="data:image/jpeg;base64,' . $result["data"] . '" width="90%" height="auto"></a></p>'; 
+				echo '<p><a href="buono_main.php?post_id='.$result["post_id"].'"><img src="data:image/jpeg;base64,' . $result["data"] . '" width="60%" height="auto"></a></p>'; 
 			}
 	?></p>
 <?php endwhile;?>

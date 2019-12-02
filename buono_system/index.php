@@ -41,7 +41,7 @@ if(isset($_POST['login'])){
 	<title>ログイン画面</title>
 </head>
 <body>
-  <img src="logo.png" alt="">
+  <img src="image/logo.png" alt="">
 	<h1>ログイン画面</h1>
 	<form action="login.php" method="POST">
     <?php if($er_msg !== null && $er_msg !==''){echo $er_msg.'<br>';} ?>
