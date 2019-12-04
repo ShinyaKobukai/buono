@@ -37,7 +37,7 @@
 		//プリペアドステートメントを作成
 
 		$user_stmt = $db->prepare(
-			"SELECT user_name,post.post_id,food_name,content,data,place,post_date FROM post LEFT OUTER JOIN user ON user.user_id = post.user_id LEFT OUTER JOIN photo_data ON post.post_id = photo_data.post_id ORDER BY post_date DESC ;"	
+			"SELECT user_name,post.post_id,icon,food_name,content,data,place,post_date FROM post LEFT OUTER JOIN user ON user.user_id = post.user_id LEFT OUTER JOIN photo_data ON post.post_id = photo_data.post_id ORDER BY post_date DESC ;"	
 		);
 
 		$pagenum_stmt = $db->prepare(
@@ -99,12 +99,12 @@
 ?>
 		<div id="TimeLine">			
 			<div id="name">
-			<?php 
-				if(empty($row['content']) == null)
-				{
-					echo $row['user_name'];
-				}
-			?>
+				<?php 
+					if(empty($row['content']) == null){
+						echo '<p><img src="data:image/jpg;base64,' . $row['icon'] . '" width="10%" height="auto"></p>'; 
+						echo $row['user_name'];
+					}
+				?>
 			</div>
 			<div id="Post_content">
 				<p><img src="image/food_menu.png" alt="menu:" width="16" height="16">　<?php echo $row['food_name'] ?></p>

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 if(isset( $_GET['msg'])){
   $er_msg = $_GET['msg'];
 }else{
@@ -42,6 +42,12 @@ if(isset($_POST['login'])){
 </head>
 <body>
   <img src="image/logo.png" alt="">
+  <?php
+    if(isset($_SESSION["msg"])){
+      echo "<h3>{$_SESSION["msg"]}</h3>".PHP_EOL;
+      $_SESSION["msg"] = null;
+    }
+  ?>
 	<h1>ログイン画面</h1>
 	<form action="login.php" method="POST">
     <?php if($er_msg !== null && $er_msg !==''){echo $er_msg.'<br>';} ?>
