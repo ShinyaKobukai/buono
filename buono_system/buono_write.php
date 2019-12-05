@@ -4,6 +4,7 @@
 	$post_id = $_POST['post_id'];
 	$user_id = $_POST['user_id'];
 	$_SESSION['user_id'] = $user_id;
+	$_SESSION['user_name'] = $user_name;
 	$food_name = $_POST['food_name'];
 	$content = $_POST['content'];
 	$place = $_POST['place'];

@@ -16,7 +16,6 @@
 	    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 	    PDO::ATTR_EMULATE_PREPARES => false,
 	];
-	
 
 	$pdo = new PDO(
 	     $dsn,
@@ -148,5 +147,6 @@
 ?>
 </body>
 <p><a href="buono_index.php">メニュー画面に戻る</a></p>
+<p><a href="profile_edit.php">プロフィールを変更する</a></p>
 <p><a href="index.php">ログイン</a></p>
 </html>

@@ -17,6 +17,7 @@ if(isset($_POST['register'])){
     $user_icon = file_get_contents($_FILES["user_icon"]["tmp_name"]);
     $user_icon = str_replace("data:image/jpeg;base64,","",$user_icon);
     $user_icon = base64_encode($user_icon);
+    $_SESSION["user_icon"]=$user_icon;
   }
     try{
       $db = new PDO('mysql:host=localhost;dbname=buono;character=utf8','root','');
@@ -69,7 +70,7 @@ if(isset($_POST['register'])){
   <title>新規登録画面</title>
 </head>
 <body>
-  <img src="image/logo.png" alt=""  id="title" />
+  <img src="image/logo.png" alt="">
   <div id="form_div">
     <br/>
     <h1>新規登録画面</h1>
@@ -86,5 +87,7 @@ if(isset($_POST['register'])){
         <input type="submit" name="register"  value="新規登録"  /><br /><br/>
     </form>
   </div>
+  <a href="buono_index.php">トップページに戻る</a></br>
+  <a href="buono_write.php">投稿する</a>
 </body>
 </html>

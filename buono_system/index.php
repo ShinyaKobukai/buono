@@ -11,6 +11,7 @@ if(isset($_POST['login'])){
   $user_name = $_POST['user_name'];
   $password = $_POST['password'];
   $user_id = $_POST['user_id'];
+  
   try{
     $db = new PDO('mysql:host=localhost;dbname=buono;character=utf8','root','');
     $sql = 'select count * from user where user_id=? and password=?';
