@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>profile edit</title>
+	<link rel="stylesheet" href="buono.css" />
+</head>
+<body>
+  <img src="logo.png" alt="">
+  <div id="form_div">
+    <br/>
+    <h1>プロフィール設定</h1>
+    <form action="edit.php" method="POST" id="form" enctype="multipart/form-data">
+		ユーザーID　:　<input type="text" name="user_id" value="" /><br/>
+        <br/>
+        ユーザー名　:　<input type="text" name="user_name" value="" /><br/>
+        <br/>
+        <p>アイコンを選択してください</p><input name="user_icon" type="file"><br/>
+        <br/>
+        <input type="submit" name="edit"  value="設定する"  /><br /><br/>
+    </form>
+  </div>
+  <a href="buono_index.php">トップページに戻る</a></br>
+  <a href="buono_write.php">投稿する</a>
+</body>
+</html>
