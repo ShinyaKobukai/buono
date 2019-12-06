@@ -1,3 +1,10 @@
+<?php 
+    if(isset( $_GET['msg'])){
+    $er_msg = $_GET['msg'];
+  }else{
+    $er_msg = '';
+  }
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -10,13 +17,14 @@
   <div id="form_div">
     <br/>
     <h1>プロフィール設定</h1>
-    <form action="edit.php" method="POST" id="form" enctype="multipart/form-data">
-		ユーザーID　:　<input type="text" name="user_id" value="" /><br/>
+    <form action="profile_editdb.php" method="POST" id="form" enctype="multipart/form-data">
+		    ユーザーID　:　<input type="text" name="user_id" value="" /><br/>
         <br/>
         ユーザー名　:　<input type="text" name="user_name" value="" /><br/>
         <br/>
         <p>アイコンを選択してください</p><input name="user_icon" type="file"><br/>
         <br/>
+        パスワード　:　<input type="password" name="password" value="" /><br/>
         <input type="submit" name="edit"  value="設定する"  /><br /><br/>
     </form>
   </div>

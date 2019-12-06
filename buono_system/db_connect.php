@@ -1,5 +1,5 @@
 <?php  
-	$dsn = 'mysql:host=localhost;dbname=buono;character=utf8';
+	$db = 'mysql:host=localhost;dbname=buono;character=utf8';
 	$user = 'root';
 	$password = '';
 	$driver_options = [

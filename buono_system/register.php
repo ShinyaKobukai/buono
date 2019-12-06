@@ -3,7 +3,7 @@ session_start();
 
 if(isset($_POST['register'])){
   //print('画像があるときの処理を実行中');
-  if ( empty($_POST['user_name']) || empty($_POST['password']) || empty($_POST['user_name']) ) {
+  if ( empty($_POST['user_id']) || empty($_POST['password']) || empty($_POST['user_name']) ) {
     $_SESSION["msg"] = '入力してください';
     header('Location: index.php');
     exit;    
@@ -17,8 +17,8 @@ if(isset($_POST['register'])){
     $user_icon = file_get_contents($_FILES["user_icon"]["tmp_name"]);
     $user_icon = str_replace("data:image/jpeg;base64,","",$user_icon);
     $user_icon = base64_encode($user_icon);
-    $_SESSION["user_icon"]=$user_icon;
   }
+
     try{
       $db = new PDO('mysql:host=localhost;dbname=buono;character=utf8','root','');
       //ユーザーID重複チェック
