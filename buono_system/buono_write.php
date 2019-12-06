@@ -1,12 +1,13 @@
 <?php
 	//データの受け取り
 	session_start();
-	$post_id = $_POST['post_id'];
-	$user_id = $_POST['user_id'];
+	foreach($_POST as $key => $val){
+		$$key=trim(htmlspecialchars($val)); 
+	}
 	$_SESSION['user_id'] = $user_id;
 	$_SESSION['user_name'] = $user_name;
-	$food_name = $_POST['food_name'];
-	$content = $_POST['content'];
+
+	//タグの切り取りの変数
 	$target_text = $content;
 	$delimiter_start = "#";
 	$delimiter_end = " ";
@@ -14,20 +15,20 @@
 	$length = strpos($target_text, $delimiter_end) - $start_position;
 	$tag = substr($target_text, $start_position, $length );
 
-	$place = $_POST['place'];
-
-	$data = file_get_contents($_FILES["photo"]["tmp_name"]);
-	$data = str_replace("data:image/jpeg;base64,","",$data);
-	$data = base64_encode($data);
-
-	// var_dump($tag);
-	// exit();
 	//必須項目チェック
 	if ($food_name == '' || $content == ''){
 		header('Location:buono_main.php'); 
 		//buono_main.phpに移動
 		exit();
 	}
+
+	//写真データの変数
+	$data = file_get_contents($_FILES["photo"]["tmp_name"]);
+	$data = str_replace("data:image/jpeg;base64,","",$data);
+	$data = base64_encode($data);
+
+	// var_dump($tag);
+	// exit();
 
 	$dsn = 'mysql:host=localhost;dbname=buono;character=utf8';
 	$user = 'root';
