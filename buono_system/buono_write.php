@@ -27,9 +27,6 @@
 	$data = str_replace("data:image/jpeg;base64,","",$data);
 	$data = base64_encode($data);
 
-	// var_dump($tag);
-	// exit();
-
 	$dsn = 'mysql:host=localhost;dbname=buono;character=utf8';
 	$user = 'root';
 	$password = '';
@@ -39,10 +36,10 @@
 		$db = new PDO($dsn,$user,$password);
 		$db ->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
 
-		if ( isset($tag) ) {
+		if ( isset($tag) && (strpos("#", $content)===true)) {
 			$tag_stmt = $db->prepare("
-			INSERT INTO tag (tag_name) VALUES (:tag)
-			");
+				INSERT INTO tag (tag_name) VALUES (:tag)
+				");
 			$tag_stmt->bindParam(':tag',$tag,PDO::PARAM_STR);
 			$tag_stmt->execute();
 		}
@@ -73,11 +70,6 @@
 		$photo_stmt->bindParam(':data',$data,PDO::PARAM_STR);
 		$photo_stmt->execute();
 
-		if ($m1 == "1") {
-			print("tag処理に入りました");
-			exit();
-		}
-		header('Location: buono_main.php');
 	}catch(PDOEXception $e){
 		die('エラー：'.$e->getMessage());
 	}

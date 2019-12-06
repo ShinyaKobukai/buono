@@ -9,9 +9,9 @@ if(isset($_POST['register'])){
     exit;    
   }
 
-  $user_name = $_POST['user_name'];
-  $password = $_POST['password'];
-  $user_id = $_POST['user_id'];
+  foreach($_POST as $key => $val){
+      $$key=trim(htmlspecialchars($val)); 
+  }
 
   if( isset($_FILES["user_icon"]) ){
     $user_icon = file_get_contents($_FILES["user_icon"]["tmp_name"]);

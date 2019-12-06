@@ -9,10 +9,10 @@
     		exit;
  		}
 
-		$user_id = $_POST['user_id'];
-		$user_name = $_POST['user_name'];
-		$password = $_POST['password'];
-	
+		foreach($_POST as $key => $val){
+			$$key=trim(htmlspecialchars($val)); 
+		}
+		
 	if( isset($_FILES["user_icon"]) ){
 	    $user_icon = file_get_contents($_FILES["user_icon"]["tmp_name"]);
 	    $user_icon = str_replace("data:image/jpeg;base64,","",$user_icon);

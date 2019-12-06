@@ -48,6 +48,7 @@
 		$pagenum_stmt->bindParam(':page', $page, PDO::PARAM_INT);
 		$pagenum_stmt->bindParam(':num', $num, PDO::PARAM_INT);
 		//$pagenum_stmt->bindParam(':post_id',$post_id,PDO::PARAM_STR);
+		
 		//クエリの実行
 		$user_stmt->execute();
 		$pagenum_stmt->execute();
