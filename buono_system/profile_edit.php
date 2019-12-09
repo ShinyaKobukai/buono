@@ -20,7 +20,7 @@
     <form action="profile_editdb.php" method="POST" id="form" enctype="multipart/form-data">
         新しいユーザー名　:　<input type="text" name="user_name" value="" /><br/>
         <br/>
-        <p>新しいアイコンを選択してください</p><input name="user_icon" type="file"><br/>
+        <p>アイコンを選択してください</p><input name="user_icon" type="file"><br/>
         <br/>
 		ユーザーID　:　<input type="text" name="user_id" value="" /><br/>
         <br/>
