@@ -18,11 +18,11 @@
     </header>
         <div id="post">
         <div id ="menu_name">
-            <form action="updata_function.php?post_id=<?php echo $post_id?>" method="post">
+            <form action="post_edit.php?post_id=<?php echo $post_id?>" method="post">
         </div>
             <div id ="review"><p>編集</p></div>
             <div id ="write">
-                <textarea name="updata_content"><?php echo $content;?></textarea> 
+                <textarea name="content_editdb"><?php echo $content;?></textarea> 
             </div>
             <p><input type="submit" value="編集する"></p>
         <br /><a href="../buono_main.php">投稿一覧へ</a>
