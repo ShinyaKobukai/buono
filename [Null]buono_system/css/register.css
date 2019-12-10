@@ -1,0 +1,20 @@
+* {
+  text-align: center;
+  /* font-family: 'Roboto', sans-serif; */
+}
+
+body  {
+  background-color : #fbca4d;
+}
+
+#title {
+  width    :  15rem   ;
+  height   :  15rem   ;
+}
+
+#form_div {
+  background-color: #ffffff;
+  /*width:30rem;
+  margin:auto;*/
+  border-radius: 2rem;
+}
