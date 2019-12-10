@@ -18,7 +18,7 @@
 		$pdo = db_connect();
 		//プリペアドステートメントを作成
 		$user_stmt = $pdo->prepare(
-			"SELECT user_name,post.post_id,icon,food_name,content,data,place,post_date FROM post LEFT OUTER JOIN user ON user.user_id = post.user_id LEFT OUTER JOIN photo_data ON post.post_id = photo_data.post_id ORDER BY post_date DESC LIMIT :page, :num;"	
+			"SELECT * FROM user,post WHERE post.user_id = user.user_id ORDER BY post_date DESC LIMIT :page, :num"	
 		);
 		//パラメータの割り当て
 		$page = $page * $num;
@@ -58,10 +58,10 @@
 				</div>
 				<p><img src="image/balloon.png" alt="場所" width="16" height="16"><input type="text" name="place" placeholder="場所を入力してください（任意）" size="40" maxlength="20"></p> 
 				<div id ="write">
-						<input name="photo" type="file">
+						<p><input type="file" name="photo[]" id="photo" multiple="multiple" accept="image/jpeg,*.jpg" /></p>
+						<input type="hidden" id="base64" name="date" value="" />
 						<p><input type="submit" value="書き込む"></p></br>
-				</div>
-				
+				</div>	
 			</div>
 			</form> 
 	<hr />
@@ -81,11 +81,24 @@
 			<div id="Post_content">
 				<p><img src="image/food_menu.png" alt="menu:" width="16" height="16">　<?php echo $row['food_name'] ?></p>
 				<p><img src="image/content.png" alt="review:" width="16" height="16">　<?php echo nl2br($row['content'],false) ?></p>
-				<p><?php 
-					if(empty($row['data']) == null){
-										echo '<p><img src="data:image/jpeg;base64,' . $row['data'] . '" width="45%" height="auto"></p>'; 
-									}
-					?></p>
+					<?php 
+							$post = $row['post_id'];
+							try{
+								$sql = $pdo->prepare("SELECT p.post_id,p.data FROM photo_data AS p,post WHERE :post = p.post_id AND p.post_id = post.post_id ORDER BY post_id DESC");
+								$sql->bindParam(':post',$post,PDO::PARAM_INT);
+								$sql->execute();
+							}catch(PDOException $e){
+								echo "エラー：" . $e->getMessage();
+							}
+					while ($line = $sql->fetch()) {
+						$photo = $line['post_id'];
+						if ($post == $photo) {
+							if(empty($line['data'])==null){
+														echo '<p><img src="data:image/jpeg;base64,' . $line['data'] . '" height="auto" width="45%"></p>';
+							}
+						}
+					}
+					?>
 				<p><img src="image/balloon.png" alt="場所" width="16" height="16"><?php echo $row['place'] ?></p>
 				<p><img src="image/clock.png" alt="date:" width="16" height="16">　<?php echo $row['post_date'] ?></p>
 				<p>
@@ -119,7 +132,7 @@
 
 ?>
 </body>
-<p><a href="buono_index.php">メニュー画面に戻る</a></p>
+<p><a href="buono_index.html">メニュー画面に戻る</a></p>
 <p><a href="edit/profile_edit.php">プロフィールを変更する</a></p>
 <p><a href="login/login.php">ログイン</a></p>
 </html>

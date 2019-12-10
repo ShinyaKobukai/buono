@@ -12,7 +12,7 @@
 		exit();
 	}
 	//写真データの変数
-	$data = photo();
+	// $data = photo();
 	try{
 		//データベースに接続
 		$pdo = db_connect();
@@ -33,14 +33,19 @@
 		$stmt->bindParam(':place',$place,PDO::PARAM_STR);
 		$stmt->execute();
 		$post_id = $pdo->lastInsertId('post_id');
-		$photo_stmt = $pdo->prepare("
+		for ($i=0; $i<count($_FILES['photo']['tmp_name']); $i++) {
+			$data = file_get_contents($_FILES["photo"]["tmp_name"][$i]);
+			$data = str_replace("data:image/jpeg;base64,","",$data);
+			$data = base64_encode($data);
+			$photo_stmt = $pdo->prepare("
 			INSERT INTO photo_data (post_id,data) 
 			VALUES (:post_id, :data)
 			");
-		//パラメータを割り当て
-		$photo_stmt->bindParam(':post_id',$post_id,PDO::PARAM_INT);
-		$photo_stmt->bindParam(':data',$data,PDO::PARAM_STR);
-		$photo_stmt->execute();
+			//パラメータを割り当て
+			$photo_stmt->bindParam(':post_id',$post_id,PDO::PARAM_INT);
+			$photo_stmt->bindParam(':data',$data,PDO::PARAM_STR);
+			$photo_stmt->execute();
+		}
 		header('Location: buono_main.php');
 	}catch(PDOEXception $e){
 		die('エラー：'.$e->getMessage());
