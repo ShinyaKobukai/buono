@@ -11,7 +11,7 @@
     $stmt->execute(array($room_id,$user_id,$message));
     $stmt = null;
     $db = null;
-  	header('Location: private.php');
+  	header('Location: chat.php');
   	exit;
   } catch (PDOException $e){
   	echo $e->getMessage();
