@@ -19,8 +19,8 @@
   } catch (PDOException $e) {
     exit('データベース接続失敗。'.$e->getMessage());
   }
-  var_dump($post_id);
-  var_dump($content);
+  //var_dump($post_id);
+  //var_dump($content);
 ?>
 
 <!DOCTYPE html>
@@ -34,10 +34,8 @@
   <header>
     <img src="../image/logo.png" alt="">
   </header>
-      <div id="name">
-        <p>編集が完了しました</font></p>
-      </div>
-      <div id="post_content">
+      <div id="edit">
+        <h3>編集が完了しました</h3>
         <p>レビュー：<?php echo $content ?></p>
       </div>
 </body>

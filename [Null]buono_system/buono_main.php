@@ -44,7 +44,7 @@
 	<header>
 		<img src="image/logo.png" alt="">
 	<div id="loupe">
-     	<a href="search/search_form.php"><img src="image/search.jpeg" alt="検索"></a>
+     	<a href="search/search_form.html"><img src="image/search.jpeg" alt="検索"></a>
     </div>
 	</header>
 		<div id="post">
