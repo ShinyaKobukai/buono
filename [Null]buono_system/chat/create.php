@@ -36,7 +36,7 @@ if(isset($_POST['register'])){
       $_SESSION['room_name'] = $room_name;
       $_SESSION['person_id'] = $person_id;
 
-      header('Location: private.php');
+      header('Location: chat.php');
       exit;
 
     } else {
