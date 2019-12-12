@@ -12,7 +12,9 @@ header{
   		position:relative;
   		text-align: center;
 }
-
+textarea {
+    resize: none;
+}
 #post{
   		text-align:center;
 }

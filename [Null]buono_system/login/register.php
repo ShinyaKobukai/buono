@@ -82,7 +82,7 @@ if(isset($_POST['register'])){
         <input type="submit" name="register"  value="新規登録"  /><br /><br/>
     </form>
   </div>
-  <a href="../buono_index.php">トップページに戻る</a></br>
+  <a href="../buono_index.html">トップページに戻る</a></br>
   <a href="../buono_main.php">投稿する</a>
 </body>
 </html>

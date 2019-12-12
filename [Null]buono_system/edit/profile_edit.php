@@ -29,7 +29,7 @@
        	<br/>
     </form>
   </div>
-  <a href="../buono_index.php">トップページに戻る</a></br>
+  <a href="../buono_index.html">トップページに戻る</a></br>
   <a href="../buono_main.php">投稿する</a>
 </body>
 </html>

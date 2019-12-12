@@ -16,13 +16,7 @@
 	try{
 		//データベースに接続
 		$pdo = db_connect();
-		if ( isset($tag) ) {
-			$stmt = $pdo->prepare("
-				INSERT INTO tag (tag_name) VALUES (:tag)
-			");
-			$stmt->bindParam(':tag',$tag,PDO::PARAM_STR);
-			$stmt->execute();
-		}
+
 		$stmt = $pdo->prepare("
 			INSERT INTO post (user_id,food_name,content,place,post_date)
 			VALUES (:user_id, :food_name, :content, :place, now())
@@ -32,7 +26,9 @@
 		$stmt->bindParam(':content',$content,PDO::PARAM_STR);
 		$stmt->bindParam(':place',$place,PDO::PARAM_STR);
 		$stmt->execute();
+
 		$post_id = $pdo->lastInsertId('post_id');
+
 		for ($i=0; $i<count($_FILES['photo']['tmp_name']); $i++) {
 			$data = file_get_contents($_FILES["photo"]["tmp_name"][$i]);
 			$data = str_replace("data:image/jpeg;base64,","",$data);
@@ -46,6 +42,30 @@
 			$photo_stmt->bindParam(':data',$data,PDO::PARAM_STR);
 			$photo_stmt->execute();
 		}
+		//contentに#があった際の処理
+		if(strpos($content,'#') !== false){
+			if(strpos($content,' ') !== false){
+				$tag = explode(" ",$content);
+				var_dump($content);
+				for ($tag_num=0; $tag_num < count($tag); $tag_num++) {
+					$tag_str = trim($tag[$tag_num]);
+					if(strpos($tag_str,'#') !== false){
+						$stmt = $pdo->prepare("
+							INSERT INTO tag (tag_name) VALUES (:tag)
+						");
+						$stmt->execute(array(':tag'=>$tag_str));
+						$tag_id = $pdo->lastInsertId('tag_id');
+
+						$tag_stmt = $pdo->prepare("
+							INSERT INTO post_tag (post_id,tag_id) VALUES (:post_id,:tag_id);
+						");
+						$tag_stmt->bindParam(':post_id',$post_id,PDO::PARAM_STR);
+						$tag_stmt->bindParam(':tag_id',$tag_id,PDO::PARAM_STR);
+						$tag_stmt->execute();
+					}
+				}	
+			}//--if
+		}//--if
 		header('Location: buono_main.php');
 	}catch(PDOEXception $e){
 		die('エラー：'.$e->getMessage());

@@ -6,6 +6,9 @@
 		//print("user_idがないでござる");
 		exit();
 	}
+	if (isset($_SESSION['user_id'])) {
+		$login_user = $_SESSION['user_id'];
+	}
 	//1ページに表示させるコメントの数
 	$num = 10;
 	//ページ数が指定されているとき
@@ -103,8 +106,11 @@
 				<p><img src="image/clock.png" alt="date:" width="16" height="16">　<?php echo $row['post_date'] ?></p>
 				<p>
 				</p>
-					<a href="edit/content_delete.php?post_id=<?php echo $row['post_id'] ?>">削除</a>
-				<p><a href="edit/content_edit.php?content=<?php echo $row['content'] ?>&amp;post_id=<?php echo $row['post_id'] ?>">編集</a></p>
+				<?php 
+				if ($login_user == $row['user_id']) {
+					echo '<a href="edit/content_delete.php?post_id='.$row['post_id'].'">削除</a><p><a href="edit/content_edit.php?content='.$row['content'].'&amp;post_id='.$row['post_id'].'">編集</a></p>';
+				}
+				?>
 			</div>
 		</div>
 <?php

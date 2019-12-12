@@ -2,7 +2,7 @@
   include_once("../common/db_connect.php");
   $pdo = db_connect();
   $post_id = intval($_GET['post_id']);
-  $content = trim(htmlspecialchars($_POST["updata_content"]));
+  $content = trim(htmlspecialchars($_POST["content_editdb"]));
   try {
     $updata_stmt = $pdo->prepare(
       "UPDATE post SET content=:content WHERE post_id=:post_id "  
