@@ -2,9 +2,14 @@
 session_start();
 
 if(isset($_POST['register'])){
-  //print('画像があるときの処理を実行中');
-  if ( empty($_POST['user_id']) || empty($_POST['password'])) {
+  if ( empty($_POST['user_id']) || empty($_POST['password']) || empty($_POST['c_password']) ) {
     $_SESSION["msg"] = '入力してください';
+    header('Location: login.php');
+    exit;    
+  }
+
+  if ( $_POST['password'] != $_POST['c_password'] ) {
+    $_SESSION["msg"] = '同じパスワードを入力してください';
     header('Location: login.php');
     exit;    
   }
@@ -29,8 +34,9 @@ if(isset($_POST['register'])){
 
   
       while($result == true){
-        echo 'そのユーザーIDは既に存在しています。';
-        exit;
+        $_SESSION["msg"] = 'そのユーザーは既に存在しています。';
+        header('Location: login.php');
+        exit;    
       }
 
       //データベースにアカウント情報を登録
@@ -78,6 +84,7 @@ if(isset($_POST['register'])){
         ユーザーID　:　<input type="text" name="user_id" value="" /><br/><br/>
         ユーザー名　:　<input type="text" name="user_name" value="" /><br/><br/>
         パスワード　:　<input type="password" name="password" value="" /><br/><br/>
+        パスワード(SAIKANIN)　:　<input type="password" name="c_password" value="" /><br/><br/>
         <p>アイコンを選択してください</p><input name="user_icon" type="file"><br/><br/>
         <input type="submit" name="register"  value="新規登録"  /><br /><br/>
     </form>
