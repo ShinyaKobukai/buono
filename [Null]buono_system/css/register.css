@@ -1,20 +1,43 @@
-* {
-  text-align: center;
-  /* font-family: 'Roboto', sans-serif; */
+h1 {
+	border-bottom: double 6px #FF8000;
 }
 
-body  {
-  background-color : #fbca4d;
+body {
+	background-color: #fbca4d;
 }
 
-#title {
-  width    :  15rem   ;
-  height   :  15rem   ;
+label {
+	display: block;
+	margin-top: 20px;
 }
 
-#form_div {
-  background-color: #ffffff;
-  /*width:30rem;
-  margin:auto;*/
-  border-radius: 2rem;
+input {
+	border-radius: 1.5rem;
 }
+
+input[type="text"],
+input[type="password"]{
+	background-color: #E1F5A9;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus{
+	background-color: #CEE3F6;
+}
+
+input[type="submit"],
+input[type="reset"]{
+	display: block;
+	margin:30px auto;
+	width: 150px;
+}
+
+.regi_info {
+	margin: 0 auto;
+	margin-bottom: 30vh;
+	padding: 20px 0;
+		width:280px;
+		text-align: center;
+		border-radius: 2.5rem;
+		background-color: white;
+	}
