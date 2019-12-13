@@ -18,7 +18,7 @@
 		$_SESSION['room_id'] = $room_id;
 		$room_name = $_POST['room_name'];
 		$_SESSION['room_name'] = $room_name;
-		header('Location: private.php');
+		header('Location: chat.php');
     exit;
 	}
 
