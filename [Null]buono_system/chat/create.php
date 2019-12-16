@@ -25,7 +25,7 @@ if(isset($_POST['register'])){
     if(($result == true) && ($person_id != $user_id)){
 
       //データベースに登録
-      $sql = 'insert into chat(room_id,person_id,user_id,room_name) values(?,?,?,?)';
+      $sql = 'insert into chat(room_id,person_id,user_id,room_name,create_time) values(?,?,?,?,now())';
       $stmt = $db->prepare($sql);
       $stmt->execute(array('',$person_id,$user_id,$room_name));
       $room_id = $db->lastInsertId('room_id');
