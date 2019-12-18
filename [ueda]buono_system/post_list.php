@@ -41,6 +41,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="css/common.css" type="text/css">
+    <link rel="stylesheet" href="css/post_form.css" type="text/css">
     <link rel="stylesheet" href="css/register.css" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
     <title>Buono -投稿一覧-</title>
@@ -126,9 +127,35 @@
 
 ?>
 </main>
+<div id="post_button">
+  <button>
+    <img src="img/post_icon.png" id="open" alt="ボタン" />
+  </button>
+</div>
+<div id="post_form">
+  <div id ="menu_name">
+    <form action="buono_write.php" enctype="multipart/form-data" method="post">
+        <p><input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id'];?>"></p></br>
+        <p><img src="image/food_menu.png" alt="menu" width="16" height="16"><input type="text" name="food_name" placeholder="メニューの名前を入力してください（必須）" size="40" maxlength="20"></p> 
+      </div>
+        <div id ="review">  
+          <p><img src="image/content.png" alt="review:" width="16" height="16"><textarea name="content" placeholder="感想を入力してください（必須）" rows="4" cols="31"></textarea></p>
+        </div>
+        <p><img src="image/balloon.png" alt="場所" width="16" height="16"><input type="text" name="place" placeholder="場所を入力してください（任意）" size="40" maxlength="20"></p> 
+        <div id ="write">
+            <p><input type="file" name="photo[]" id="photo" multiple="multiple" accept="image/jpeg,*.jpg" /></p>
+            <input type="hidden" id="base64" name="date" value="" />
+            <p><input type="submit" value="書き込む"></p></br>
+        </div>  
+      </div>
+    </form> 
+</div>
   <footer>
     <address>&copy;2019 buono All Rights Reserved.</address>
   </footer>
+ 
+  <script src="js/jquery-2.1.4.min.js"></script>
+  <script src="js/post-form.js"></script>
   <script src="js/all.js"></script>
 </body>
 </html>
