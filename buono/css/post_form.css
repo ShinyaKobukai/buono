@@ -1,0 +1,80 @@
+#post_button{
+	position: fixed;
+	top: auto;
+	bottom: 80px;
+	z-index: 2000;
+}
+button{
+	padding: 5px;
+	margin: 1rem 1rem;
+	width: 50px;
+	height: 50px;
+	border: solid 5px #32ceee;
+	border-radius: 50%;
+	box-shadow:0 0 1px #333;
+	right: 0;
+	position: fixed;
+	text-align: center;
+}
+button > img{
+	margin:auto;
+	width: 95%;
+	height: 95%;
+}
+/*薄く黒色を重ねる*/
+#black-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: 1999;
+  opacity: 0.5;
+}
+/*post_formを真ん中に配置するための空間*/
+#flex-area{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	background: #000;
+}
+#post_form{
+	position: fixed;
+	padding: 5px;
+	margin: auto;
+	width: auto;
+	height: 75%;
+	top: 100px;
+	bottom:auto;
+	border: solid 5px #fff;
+	border-radius: 0.5rem;
+	box-shadow:0 0 3px #333;
+	background-color: #fff;
+	text-align: center;
+	z-index: 2000;
+}
+#top_form {
+	font-size: 18px;
+	margin-top: 1.5rem;
+	/*↓位置の確認に使ってる設定*/
+	/*background: #ccc;*/
+}
+#menu_name > form > p{
+	margin-bottom: 10px;
+}
+#review > p{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#write > p{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+
+textarea {
+    resize: none;
+}

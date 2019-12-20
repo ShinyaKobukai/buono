@@ -1,0 +1,44 @@
+#back{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: 75%;
+}
+#box{
+	width: 10%;
+	height: 75%;
+	border: solid 1px #000000;
+	background: #FFD833;
+}
+#search_box{
+	width: 60%;
+	height: 75%;
+	border: solid 1px #000000;
+	background: #FFD833;
+}
+#search_box form{
+	text-align: center;
+}
+#search_box form p:nth-last-of-type(1) input{
+	font-size: 24px;
+	color: #E75480;
+	background-color: #fff;
+	border: solid 1px #000000;
+}
+#main{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	height: auto;
+}
+#main a{
+	text-align: center;
+	width: 45px;
+	height: 45px;
+	color: #FF3333;
+	font-size: 32px;
+	border: solid 4px #FF3333;
+	border-radius: 50%;
+	text-decoration: none ;
+	background-color: #FFF;
+}

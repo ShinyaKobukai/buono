@@ -1,0 +1,42 @@
+/*ヘッダーのメニューだけ
+----------------------------------------------------*/
+#menu ul {
+	display:flex;
+	justify-content:center;
+	margin:0 auto;
+	list-style: none;
+}
+#menu li {
+	margin:0 1%;
+	width:30%;
+	max-width:200px;
+}
+#menu li:fist-of-type {
+	margin-left:1%;
+}
+#menu a {
+	box-sizing:border-box;
+	display:block;
+	margin:5px;
+	padding:5px 0;
+	border-radius:5px;
+	text-align:center;
+	font-size:13px;
+	color:#06f;
+	background-color:#ffffff;
+	text-decoration:none;
+	box-shadow:0 0 3px #333;
+	transition:all .3s ease 0s;
+}
+#menu a svg {
+	display:block;
+	margin:0 auto;
+	font-size:1.8rem;
+}
+#menu a span {
+	display:block;
+}
+#menu a:hover{
+	color:#f00;
+	box-shadow:0 0 3px #f30;
+}

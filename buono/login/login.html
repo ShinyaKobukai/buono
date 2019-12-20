@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/common.css" type="text/css">
+    <link rel="stylesheet" href="../css/register.css" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+    <title>Buono -ログイン-</title>
+</head>
+<body>
+  <header>
+    <nav id="menu">
+      <ul>
+        <li><a href="../home.html"><i class="fas fa-home"></i>ホーム</a></li>
+        <li><a href="register.html"><i class="fas fa-user"></i>アカウント作成</a></li>
+        <li><a href="login.html"><i class="fas fa-sign-in-alt"></i>ログイン</a></li>
+        <li><a href="../edit/profile_edit.html"><i class="fas fa-user-cog"></i>プロフィール編集</a></li>
+        <li><a href="../post_list.php"><i class="far fa-comments"></i>ポスト</a></li>
+      </ul>
+    </nav>
+  </header>
+<main>
+  <div class="regi_info">
+    <h1>ログイン</h1>
+    <form action="login.php" method="POST" id = "form">
+      <label for="box">ユーザーID</label>
+      <input type="text" name="user_id" value="" id="box"/>
+      <label for="password">パスワード</label>
+      <input type="password" name="password" value="" id="password" />
+      <input type="submit" name="login"  value="ログイン"  />
+    </form>
+  </div>
+</main>
+  <footer>
+    <address>&copy;2019 buono All Rights Reserved.</address>
+  </footer>
+  <script src="../js/all.js"></script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+h1 {
+	border-bottom: double 6px #FF8000;
+}
+
+body {
+	background-color: #fbca4d;
+}
+
+label {
+	display: block;
+	margin-top: 20px;
+}
+
+input {
+	border-radius: 1.5rem;
+}
+
+.name img{
+	object-position:;
+	border-radius: 100rem; 
+	width: 50px;
+ 	height: 50px;
+ 	object-fit: cover;
+}
+
+#TimeLine{
+	margin-left: 2.5rem;
+	margin-right: 2.5rem;
+	margin-top: 2rem;
+	flex-direction: row;
+}
+
+#Post_content{
+	/*background-color: #FFFFF9;*/
+	border-radius: 0.5rem;
+}
+
+.icon{
+	height: 20%;
+	width: 40%;
+}
+
+.name{
+	background-color: #CCFFCC;
+	border-radius: 0.5rem;
+	margin-top: 1rem;/*
+	align-content: stretch;*/
+	align-items: baseline;
+	flex-direction: row;
+}
+
+.content_photo{
+	background-color: #FFCC99;
+	border-radius: 0.5rem;
+	height: 40%
+	width:;
+}
+
+
+.info{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr; 
+}
+
+.food_name{
+	grid-col: 1/2;
+	grid-row: 1/3;
+	background-color: #66CC00;
+	border-radius: 0.5rem;
+}
+
+.place{
+	grid-col: 2/3;
+	grid-row: 1/2;
+	background-color: #CC00FF;
+	border-radius: 0.5rem;
+}
+
+.date{
+	grid-col: 2/3;
+	grid-row: 2/3;
+	background-color: #9999FF;
+	border-radius: 0.5rem;
+}
+
+.content{
+	background-color: #FFFF99;
+	border-radius: 0.5rem;
+}
+
+.hash{
+	background-color: #FFFF;
+	border-radius: 0.5rem;
+}
+
+.button{
+	display: flex;
+	background-color: #FFFF;
+}
+
+.edit{
+	background-color: #deb887;
+	border-radius: 0.5rem;
+	min-width:120;
+	height: 60px;
+}
+
+.delete{
+	background-color: #ff69b4;
+	border-radius: 0.5rem;
+	width: 120px;
+	height: 60px;
+}
