@@ -75,7 +75,7 @@
       <ul>
         <li><a href="home.html"><i class="fas fa-home"></i>ホーム</a></li>
         <li><a href="login/register.html"><i class="fas fa-user"></i>アカウント作成</a></li>
-        <li><a href="login/logout.php"><i class="fas fa-sign-in-alt"></i>ログアウト</a></li>
+        <li><a href="login/login.html"><i class="fas fa-sign-in-alt"></i>ログイン</a></li>
         <li><a href="edit/profile_edit.html"><i class="fas fa-user-cog"></i>プロフィール編集</a></li>
         <li><a href="post_list.php"><i class="far fa-comments"></i>ポスト</a></li>
       </ul>
@@ -86,8 +86,8 @@
   while ($row = $user_stmt->fetch()):
     $food_name = $row['food_name'] ? $row['food_name'] : '(無題)';
 ?>
-    <div class="TimeLine">     
-      <div class="Post_content">
+    <div id="TimeLine">     
+      <div id="Post_content">
       <div class="name">
         <?php 
           if(empty($row['content']) == null){
@@ -129,9 +129,11 @@
           if ($login_user == $row['user_id']) {
             echo 
               '<div class="button">
+                <div class="edit"><a href="edit/content_edit.php?content='.$row['content'].'&amp;post_id='.$row['post_id'].'" class="btn-flat-border">編集</a></div>
                 <div class="delete"><a href="edit/content_delete.php?post_id='.$row['post_id'].'">削除</a></div>
-                <div class="edit"><a href="edit/content_edit.php?content='.$row['content'].'&amp;post_id='.$row['post_id'].'">編集</a></div>
               </div>';
+          }else{
+            echo '<div class="message"><a href="chat/chat_create.php?user_id='.$row['user_id'].'">DM</a></div>';
           }
         ?>
       </div>
@@ -173,12 +175,12 @@
       <p id="top_form">投稿</p>
       <form action="post_write.php" enctype="multipart/form-data" method="post">
           <p><input type="hidden" name="user_id" value="<?php echo $_SESSION['user_id'];?>"></p></br>
-          <p><img src="image/food_menu.png" alt="menu:" width="16" height="16"><input type="text" name="food_name" placeholder="メニューの名前を入力してください（必須）" size="40" maxlength="20"></p> 
+          <p><img src="img/food_menu.png" alt="menu:" width="16" height="16"><input type="text" name="food_name" placeholder="メニューの名前を入力してください（必須）" size="20" maxlength="20"></p> 
         </div>
           <div id ="review">  
-            <p><img src="image/content.png" alt="review:" width="16" height="16"><textarea name="content" placeholder="感想を入力してください（必須）" rows="4" cols="31"></textarea></p>
+            <p><img src="img/content.png" alt="review:" width="16" height="16"><textarea name="content" placeholder="感想を入力してください（必須）" rows="4" cols="17"></textarea></p>
           </div>
-          <p><img src="image/balloon.png" alt="場所:" width="16" height="16"><input type="text" name="place" placeholder="場所を入力してください（任意）" size="40" maxlength="20"></p> 
+          <p><img src="img/balloon.png" alt="場所:" width="16" height="16"><input type="text" name="place" placeholder="場所を入力してください（任意）" size="20" maxlength="20"></p> 
           <div id ="write">
               <p><input type="file" name="photo[]" id="photo" multiple="multiple" accept="image/jpeg,*.jpg" /></p>
               <input type="hidden" id="base64" name="date" value="" />
