@@ -16,18 +16,21 @@
 	}
 ?>
 <?php
-	if(isset($_POST['send'])){
+	if(isset($_POST['send']) && !empty($_POST['message'])){
 	  try{
-		  $message_id = $_POST['message_id'];
-		  $message = $_POST['message'];
-		  $_SESSION['message_id'] = $message_id;
-	    $_SESSION['message'] = $message;
-	    $db = new PDO('mysql:host=localhost;dbname=buono;character=utf8','root','');
+		$message_id = $_POST['message_id'];
+		$message = $_POST['message'];
+		$_SESSION['message_id'] = $message_id;
+		$_SESSION['message'] = $message;
+		$db = new PDO('mysql:host=localhost;dbname=buono;character=utf8','root','');
 	    header('Location: chat_register.php');
 	    exit;
 		} catch (PDOException $e){
     	echo $e->getMessage();
     	exit;
+  	}
+  	if ( empty($_POST['message']) ) {
+  		header('Location: chat.php');
   	}
   }
 ?>
