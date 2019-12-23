@@ -75,7 +75,7 @@
       <ul>
         <li><a href="home.html"><i class="fas fa-home"></i>ホーム</a></li>
         <li><a href="login/register.html"><i class="fas fa-user"></i>アカウント作成</a></li>
-        <li><a href="login/login.html"><i class="fas fa-sign-in-alt"></i>ログイン</a></li>
+        <li><a href="login/logout.php"><i class="fas fa-sign-in-alt"></i>ログアウト</a></li>
         <li><a href="edit/profile_edit.html"><i class="fas fa-user-cog"></i>プロフィール編集</a></li>
         <li><a href="post_list.php"><i class="far fa-comments"></i>ポスト</a></li>
       </ul>
@@ -86,8 +86,8 @@
   while ($row = $user_stmt->fetch()):
     $food_name = $row['food_name'] ? $row['food_name'] : '(無題)';
 ?>
-    <div id="TimeLine">     
-      <div id="Post_content">
+    <div class="TimeLine">     
+      <div class="Post_content">
       <div class="name">
         <?php 
           if(empty($row['content']) == null){
@@ -129,8 +129,8 @@
           if ($login_user == $row['user_id']) {
             echo 
               '<div class="button">
-                <div class="edit"><a href="edit/content_edit.php?content='.$row['content'].'&amp;post_id='.$row['post_id'].'">編集</a></div>
                 <div class="delete"><a href="edit/content_delete.php?post_id='.$row['post_id'].'">削除</a></div>
+                <div class="edit"><a href="edit/content_edit.php?content='.$row['content'].'&amp;post_id='.$row['post_id'].'">編集</a></div>
               </div>';
           }
         ?>
