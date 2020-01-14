@@ -51,6 +51,6 @@
 	<?php
 		endwhile;
 	?>	
-	<a href="../buono_main.php">メイン画面に戻る</a>
+	<a href="../post_list.php">メイン画面に戻る</a>
 </body>
 </html>
