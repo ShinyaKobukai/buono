@@ -2,7 +2,7 @@
     include_once("../common/db_connect.php");
     session_start();
     $pdo = db_connect();
-    //ƒf[ƒ^‚ÌŽó‚¯Žæ‚è
+    //データの受け取り
     $p_id = $_GET['user_id'];
     $u_id = $_SESSION['user_id'];
     

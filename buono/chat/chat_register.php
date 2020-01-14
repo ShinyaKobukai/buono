@@ -11,6 +11,10 @@
       values(?,?,?,now())';
     $stmt = $db->prepare($sql);
     $stmt->execute(array($room_id,$user_id,$message));
+
+    $sql = 'update chat set update_time = now() where room_id=?';
+    $stmt = $db->prepare($sql);
+    $stmt->execute(array($room_id));
     $stmt = null;
     $db = null;
   	header('Location: chat.php');
