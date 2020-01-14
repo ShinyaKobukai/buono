@@ -6,7 +6,8 @@
 	$room_name = $_SESSION['room_name'];
 
 	try{
-		$db = new PDO('mysql:host=localhost;dbname=buono;character=utf8','root','');
+		include_once("../common/db_connect.php");
+  	$pdo = db_connect();
 		$sql = '
 			SELECT 
 			chat_post.message_id,
@@ -19,7 +20,7 @@
 			user.user_id=chat_post.user_id 
 			WHERE 
 			chat_post.room_id=?';
-		$stmt = $db->prepare($sql);
+		$stmt = $pdo->prepare($sql);
 		$stmt->execute(array($room_id));
 	} catch (PDOException $e) {
 		echo $e->getMessage();

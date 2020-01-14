@@ -4,9 +4,10 @@
 
 
 	try{
-		$db = new PDO('mysql:host=localhost;dbname=buono;character=utf8','root','');
+		include_once("../common/db_connect.php");
+  	$pdo = db_connect();
 		$sql = 'select room_id,person_id,user_id,room_name,status from chat where not(status=3) and ((user_id=? and status!=2) or (person_id=? and status!=1)) order by update_time desc';
-		$stmt = $db->prepare($sql);
+		$stmt = $pdo->prepare($sql);
 		$stmt->execute(array($user_id,$user_id));
 	} catch (PDOException $e) {
 		echo $e->getMessage();

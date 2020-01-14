@@ -15,11 +15,12 @@ if(isset($_POST['register'])){
   $user_id = $_SESSION['user_id'];
 
   try{
-    $db = new PDO('mysql:host=localhost;dbname=buono;character=utf8','root','');
+    include_once("../common/db_connect.php");
+    $pdo = db_connect();
     //$stmt = $db->prepare($pre_sql);
     //$stmt->execute(array($user_id));
     $pre_sql = 'SELECT user_id FROM user WHERE user_id=?';
-    $stmt = $db->prepare($pre_sql);
+    $stmt = $pdo->prepare($pre_sql);
     $stmt->execute(array($person_id));
     $result = $stmt->fetch();
     if(($result == true) && ($person_id != $user_id)){
@@ -28,9 +29,9 @@ if(isset($_POST['register'])){
       $sql = 'insert into chat(
         room_id,person_id,user_id,room_name,create_time) 
         values(?,?,?,?,now())';
-      $stmt = $db->prepare($sql);
+      $stmt = $pdo->prepare($sql);
       $stmt->execute(array('',$person_id,$user_id,$room_name));
-      $room_id = $db->lastInsertId('room_id');
+      $room_id = $pdo->lastInsertId('room_id');
       $stmt = null;
       $db = null;
 

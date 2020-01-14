@@ -6,9 +6,10 @@
     $person_id = $_SESSION['person_id'];
 
 
-    $db = new PDO('mysql:host=localhost;dbname=buono;character=utf8','root','');
+    include_once("../common/db_connect.php");
+    $pdo = db_connect();
     $sql = 'select status from chat where room_id=?';
-    $stmt = $db->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     $stmt->execute(array($room_id));
     $row = $stmt->fetch();
     $status_flag = $row['status'];
@@ -26,7 +27,7 @@
 
     $db = new PDO('mysql:host=localhost;dbname=buono;character=utf8','root','');
     $sql = 'update chat set status=? where room_id=?';
-    $stmt = $db->prepare($sql);
+    $stmt = $pdo->prepare($sql);
     $stmt->execute(array($status_flag,$room_id));
     $stmt = null;
     $db = null;
