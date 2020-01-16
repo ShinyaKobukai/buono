@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>チャットサンプル</title>
+	<link rel="stylesheet" href="/event/css/user_chat.css" />
+	<link rel="stylesheet" href="/event/css/navi.css" />
+</head>
+<body>
+<nav>
+	<ul>
+		<li><a href="/event/user_regist.html">ユーザー登録</a></li>
+		<li><a href="/event/user_login.html">ユーザーログイン</a></li>
+		<li><a href="/event/php/user_chat.php">ユーザーチャット</a></li>
+		<li><a href="/event/php/spa_chat.php">SPAユーザーチャット</a></li>
+	</ul>
+</nav>
+<ul id="sample"></ul>
+<script>localStorage.clear();</script>
+<script>
+/*
+document.addEventListener('DOMContentLoaded',e=>{
+	const es = new EventSource('/event/php/event.php',{withCredentials:true});
+	console.log('init -> '+es.readyState);
+	es.addEventListener('open',e =>{
+		console.log('open');
+	});
+	es.addEventListener('error',e =>{
+		console.log('error');
+		es.close();
+	});
+	es.addEventListener('message',e=>{
+		const data = JSON.parse(e.data);
+		const { time, word } = JSON.parse(e.data);
+		console.log(data);
+		console.log(data.word);
+		if( 'END-OF-STREAM' == data.word ){
+			console.log("Connection close");
+			es.close();
+		}
+		sample.appendChild(document.createElement('li')).textContent = `${time} ${word}`;
+	});
+});
+*/
+</script>
+</body>
+</html>
