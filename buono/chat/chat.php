@@ -99,4 +99,5 @@
 	<script src="../js/chat.js"></script>
 	<script src="../js/all.js"></script>
 </main>
+<script src="reload.js"></script>
 </html>
