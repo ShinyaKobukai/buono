@@ -14,6 +14,7 @@
     $user_id = $_POST['user_id'];
     print("loginに関するパラメータを受け取りました");
     $_SESSION['user_id'] = $user_id;
+    $_SESSION["correct"] = base64_encode($user_id);
     
     try{
       print("sqlを開始します");
