@@ -1,0 +1,161 @@
+/*-- default
+--------------------------------------------------*/
+html{
+	font-size:62.5%;
+}
+body{
+	font-size:1.6rem;
+}
+body,h1,h2,h3,h4,h5,h6,p,dl,dt,dd,ul,ol,li,address{
+	margin:0;
+	padding:0;
+	font-style:normal;
+	font-weight:normal;
+}
+
+/*-- chat
+--------------------------------------------------*/
+#sample{
+	margin-bottom:6rem;
+	padding:2rem 0;
+	padding-bottom:6rem;
+	color:#000;
+	background-color:#ffc;
+	list-style:none;
+}
+#sample li{
+	margin:1rem;
+}
+#sample li:first-of-type{
+	margin-top:0;
+}
+.no_move li{
+	box-sizing:border-box;
+	display:block;
+	margin:0 auto;
+	padding:1rem;
+	border:none;
+	border-radius:1rem;
+	color:#000;
+	background-color:#fff;
+	box-shadow:0 0 .3rem #ccc;
+	word-break: break-all;
+}
+footer{
+	position:fixed;
+	z-index:999;
+	left:0;
+	bottom:0;
+	width:100%;
+	height:6rem;
+	color:#fff;
+	background-color:#666;
+}
+.uinput{
+	display:flex;
+	margin:.5rem auto;
+	width:32rem;
+}
+.uinput label{
+	display:block;
+	margin:0 .5rem;
+	border:.1rem solid #666;
+	width:4rem;
+	height:3rem;
+	line-height:3rem;
+}
+#uinput{
+	display:block;
+	margin:0 .5rem;
+	padding:0;
+	border:.1rem solid #666;
+	border-radius:.5rem;
+	width:20rem;
+	height:3rem;
+	line-height:3rem;
+}
+#uinput+button{
+	display:block;
+	margin:0 .5rem;
+	border:.1rem solid #666;
+	border-radius:.5rem;
+	width:8rem;
+	height:3rem;
+	line-height:3rem;
+}
+/*-- custom ui
+--------------------------------------------------*/
+#reset{
+	position:absolute;
+	right:.5rem;
+	bottom:.5rem;
+	display:block;
+	border:none;
+	border-radius:.5rem;
+	width:5rem;
+	height:5rem;
+	line-height:5rem;
+	font-size:3rem;
+	text-align:center;
+	cursor:pointer;
+}
+.uinput .icon{
+	font-size:3rem;
+}
+.theme{
+	color:#fff;
+	background-color:#666;
+	text-align:center;
+}
+/*-- chat custom
+--------------------------------------------------*/
+.chat{
+	box-sizing:border-box;
+	display:block;
+	margin:0 auto;
+	padding:1rem;
+	border:none;
+	border-radius:1rem;
+	width:100%;
+	min-width:32rem;
+	max-width:96rem;
+	color:#000;
+	background-color:#fff;
+	box-shadow:0 0 .3rem #ccc;
+	word-break: break-all;
+}
+.info{
+	display:flex;
+}
+.info span{
+	display:block;
+	
+}
+.postid{
+	width:30%;
+	min-width:6rem;
+	font-size:1.2rem;
+}
+.made{
+	width:30%;
+	font-size:1.2rem;
+}
+.time{
+	width:30%;
+	font-size:1rem;
+}
+.own{
+	box-shadow:0 0 .4rem #0bd;
+}
+.own .info{
+	color:#f30;
+}
+
+/*-- fontAwesome
+--------------------------------------------------*/
+svg{
+	display:block;
+	width:100%;
+}
+
+
