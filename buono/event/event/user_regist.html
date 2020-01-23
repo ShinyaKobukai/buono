@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<title>ユーザー登録 | chat_sse</title>
+	<link rel="stylesheet" href="/event/css/user_chat.css" />
+	<link rel="stylesheet" href="/event/css/navi.css" />
+</head>
+<body>
+<div id="wrapper">
+
+	<h1 class="theme">ユーザー登録</h1>
+
+	<form action="/event/php/user_regist.php" method="POST">
+		<fieldset>
+			<legend><label for="uid">ユーザー名</label></legend>
+			<input type="text" name="uid" id="uid" value="" placeholder="ユーザー名" />
+			<span></span>
+		</fieldset>
+		<fieldset>
+			<legend><label for="pwd">パスワード</label></legend>
+			<input type="password" name="pwd" id="pwd" value="" placeholder="パスワード" />
+			<span></span>
+		</fieldset>
+		<button type="submit" name="submit">ユーザー登録</button>
+	</form>
+
+	<nav>
+		<ul>
+			<li><a href="/event/user_regist.html">ユーザー登録</a></li>
+			<li><a href="/event/user_login.html">ユーザーログイン</a></li>
+			<li><a href="/event/php/user_chat.php">ユーザーチャット</a></li>
+			<li><a href="/event/php/spa_chat.php">SPAユーザーチャット</a></li>
+		</ul>
+	</nav>
+
+</div><!-- /#wrapper -->
+
+<script src="/event/js/user_regist.js"></script>
+<script>localStorage.clear();</script>
+</body>
+</html>
