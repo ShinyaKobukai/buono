@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded',e=>{
 		}
 	}
 
-	const es = new EventSource("/event/php/api_chat.php");
+	const es = new EventSource("../php/api_chat.php");
 	//console.log("init -> " + es.readyState);
 
 	es.addEventListener("error",function(e){

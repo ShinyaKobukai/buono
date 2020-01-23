@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded',e=>{
 		}
 	}//--end if
 
-	const es = new EventSource("/test/event/php/api_chat.php");
+	const es = new EventSource("../php/api_chat.php");
 	console.log("init -> " + es.readyState);
 
 	//オリジナルevent.typeはaddEventListenerでないと拾えない
@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded',e=>{
 	},false);
 
 	es.addEventListener("ping",e=>{
-		const {cid,ctext,cmade,created_at} = JSON.parse(e.data);
+		const {message_id,room_id,user_id,message,post_time} = JSON.parse(e.data);
 
 		if( localStorage.getItem("lastEventId") == "-1" 
 			|| parseInt(e.lastEventId) > parseInt(localStorage.getItem("lastEventId")) ){
@@ -49,12 +49,12 @@ document.addEventListener('DOMContentLoaded',e=>{
 `
 	<div class="chat${cssown}">
 		<div class="info">
-			<span class="postid"><i class="fas fa-key"></i>&nbsp;${cid}</span>
-			<span class="made"><i class="far fa-comment"></i>&nbsp;${cmade}</span>
-			<span class="time" data-time="${created_at}"><i class="far fa-calendar-alt"></i>&nbsp;${setXtime(created_at)}</span>
+			<span class="postid"><i class="fas fa-key"></i>&nbsp;${message_id}</span>
+			<span class="made"><i class="far fa-comment"></i>&nbsp;${user_id}</span>
+			<span class="time" data-time="${post_time}"><i class="far fa-calendar-alt"></i>&nbsp;${setXtime(post_time)}</span>
 		</div><!-- /.info -->
 		<div class="message">
-			${ctext}
+			${message}
 		</div><!-- /.message -->
 	</div><!-- /.chat -->
 `;
@@ -80,21 +80,33 @@ document.addEventListener('DOMContentLoaded',e=>{
 	},false);
 
 	document.querySelector("#submit").addEventListener("click",e=>{
+		let room = document.querySelector("#rid").value;
 		let cmade = document.querySelector("#cmade").value;
 		let uinput = document.querySelector("#uinput").value;
-		if( cmade != "" && uinput != "" ){
+		if( room != "" && cmade != "" && uinput != "" ){
+
 			if(confirm("発言しますか")){
-				POST_chat(cmade,uinput);
+				console.log(room);
+				POST_chat(room,cmade,uinput);
 			}//--end if
 		} else {
 			alert("発言者または発言内容がありません");
 		}//--end if
 	},false);
 
-	async function POST_chat(from,chat){
-		let xDATA  = { cmade : from, uinput : chat }
+	async function POST_chat(room,from,chat){
+		let xDATA  = { rid : room, cmade : from, uinput : chat }
+
+
+
+
+
+
+
+
+
 		xDATA = JSON.stringify(xDATA);
-		const res = await fetch("/event/php/api_post.php",{
+		const res = await fetch("../php/api_post.php",{
 			method  : "POST",
 			headers : {"content-type":"application/json","accept":"application/json"},
 			body    : xDATA

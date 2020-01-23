@@ -8,9 +8,17 @@ if( isset($_POST["write_input"]) ){
 		$$key = trim(htmlspecialchars($value));
 	}
 	$pdo = db_connect();;
-	$sql = "INSERT INTO t_chat(ctext,cmade) VALUES(:ctext,:cmade)";
+	$sql = "
+	INSERT INTO 
+	 chat_post(room_id,user_id,message) 
+	VALUES(:rid,:cmade,:ctext)";
 	$sth = $pdo->prepare($sql);
-	$sth->execute(array(':ctext'=>$uinput,':cmade'=>base64_decode($cmade)));
+	$sth->execute(
+		array(
+			':rid'=>intval($rid),
+			':cmade'=>base64_decode($cmade),
+			':ctext'=>$uinput)
+	);
 }
 //--ダイレクトアクセスしてきたら強制送還
 header("Location: /event/php/user_chat.php");

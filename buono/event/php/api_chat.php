@@ -26,10 +26,11 @@ $limit = count($result);
 
 for($i=0; $i<$limit; $i++){
 	$chat = array(
-		"cid"       =>$result[$i]["message_id"],
-		"ctext"     =>$result[$i]["message"],
-		"cmade"     =>$result[$i]["user_id"],
-		"created_at"=>$result[$i]["post_time"]
+		"message_id"  =>$result[$i]["message_id"],
+		"room_id"     =>$result[$i]["room_id"],
+		"user_id"     =>$result[$i]["user_id"],
+		"message"     =>$result[$i]["message"],
+		"post_time"		=>$result[$i]["post_time"]
 	);
 	//--push通信をあえてpingイベントとして送信する
 	push($i,json_encode($chat,true),"ping");

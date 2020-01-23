@@ -1,7 +1,7 @@
 <?php
 session_start();
 include("user_check.php");
-include_once("../common/db_connect.php");
+include_once("../../common/db_connect.php");
 //--送信されてきたリクエストデータを受け取る
 $REQUEST = json_decode(file_get_contents('php://input'),true);
 //--HTTPメソッド
@@ -10,6 +10,7 @@ $METHOD = $_SERVER["REQUEST_METHOD"];
 $CHECK = array();
 //--すべてのヘッダー情報を取得
 $ALLHD = getallheaders();
+
 
 //--改ざんしずらいヘッダープロパティの確認
 foreach( $ALLHD as $key => $val ){
@@ -50,6 +51,10 @@ switch( $METHOD ){
 function POST_chat(){
 	//--【重要】
 	global $REQUEST,$CHECK,$ALLHD;
+// echo json_encode($REQUEST,true);
+// exit();
+
+
 	/*
 	if( $CHECK["authorization"] != 1 ){
 		//--authorization情報がない
@@ -60,16 +65,36 @@ function POST_chat(){
 		$header_token = explode('Bearer ',$ALLHD["authorization"])[1];
 	}
 	*/
-	$pdo = db_connect();;
-	$sql = "INSERT INTO t_chat(ctext,cmade) VALUES(:ctext,:cmade)";
+	$pdo = db_connect();
+	$sql = "
+	INSERT INTO
+	 chat_post(room_id,user_id,message)
+	VALUES(:rid,:cmade,:ctext)";
+	
 	$sth = $pdo->prepare($sql);
-	$sth->execute(array(':ctext'=>$REQUEST["uinput"],':cmade'=>base64_decode($REQUEST["cmade"])));
-	$sql = "SELECT * FROM t_chat WHERE ctext=:ctext AND cmade=:cmade";
+	$sth->execute(
+		array(
+			':rid'=>intval($REQUEST["rid"]),
+			':ctext'=>$REQUEST["uinput"],
+			':cmade'=>base64_decode($REQUEST["cmade"])
+		)
+	);
+	//var_dump($sth);
+	//exit;
+
+	//確認
+	$sql = "SELECT * FROM chat_post WHERE room_id=:rid AND message=:ctext AND user_id=:cmade";
 	$sth = $pdo->prepare($sql);
-	$sth->execute(array(':ctext'=>$REQUEST["uinput"],':cmade'=>base64_decode($REQUEST["cmade"])));
+	$sth->execute(
+		array(
+			':rid'=>intval($REQUEST["rid"]),
+			':ctext'=>$REQUEST["uinput"],
+			':cmade'=>base64_decode($REQUEST["cmade"]
+		)
+		));
 	$result = $sth->fetchAll(PDO::FETCH_ASSOC);
 	if( count($result) ){
-		echo '{"status":"success","cid":"'.$result[0]["cid"].'"}';
+		echo '{"status":"success","message_id":"'.$result[0]["message_id"].'"}';
 	} else {
 		echo '{"status":"failure"}';
 	}
