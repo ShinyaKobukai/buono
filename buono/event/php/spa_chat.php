@@ -7,12 +7,13 @@ session_start();
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
-	<title>SPAユーザーチャット | chat_sse</title>
+	<title>チャットルーム</title>
 	<link rel="stylesheet" href="../css/user_chat.css" />
+	<link rel="stylesheet" href="../../css/chat1.css" />
 </head>
 <body data-owner="<?php echo $_SESSION["correct"];?>">
 <div id="wrapper">
-	<h1 class="theme">JS-fetchによるform遷移なしの自動更新テスト</h1>
+	<h1 class="theme"></h1>
 	<ul id="sample"></ul>
 	<footer>
 		<?php echo $_SESSION["room_id"];?>

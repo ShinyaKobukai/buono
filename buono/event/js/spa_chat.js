@@ -32,30 +32,29 @@ document.addEventListener('DOMContentLoaded',e=>{
 			let cssown = "";
 			let owner = atob(document.body.getAttribute("data-owner"));
 			console.log("オーナー：",owner);
-			if( owner == cmade ){
-				cssown = " own";
+			if( owner == user_id ){
+				cssown = "own";
+			} else {
+				cssown = "no"
 			}
-
-
-
-
-
-
-
 
 			let sample = document.querySelector("#sample");
 			let li = document.createElement("li");
+			// <span class="made">&nbsp;${user_id}</span>
+			// <span class="postid">&nbsp;${message_id}</span>
+			// <span class="time" data-time="${post_time}">&nbsp;${setXtime(post_time)}</span>
 			li.innerHTML = 
 `
-	<div class="chat${cssown}">
+	<div class="chat">
 		<div class="info">
-			<span class="postid"><i class="fas fa-key"></i>&nbsp;${message_id}</span>
-			<span class="made"><i class="far fa-comment"></i>&nbsp;${user_id}</span>
-			<span class="time" data-time="${post_time}"><i class="far fa-calendar-alt"></i>&nbsp;${setXtime(post_time)}</span>
+
+			<div class="${cssown}">
+				<p>${message}</p>
+			</div><!-- /.message -->
 		</div><!-- /.info -->
-		<div class="message">
-			${message}
-		</div><!-- /.message -->
+
+
+
 	</div><!-- /.chat -->
 `;
 			sample.appendChild(li);
